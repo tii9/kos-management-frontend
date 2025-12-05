@@ -9,7 +9,7 @@ type cardStatsType = {
   color: string;
 };
 
-export const cardStats: cardStatsType[] = [
+export const roomCardStats: cardStatsType[] = [
   {
     title: "Total Kamar",
     icon: BedIcon,

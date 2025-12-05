@@ -1,5 +1,5 @@
-export const getAllRoom = async (token: string) => {
-  const res = await fetch("http://localhost:3000/api/room", {
+export const getAllTenants = async (token: string) => {
+  const res = await fetch("http://localhost:3000/api/tenant", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

@@ -7,7 +7,7 @@ import UpdateRoomFormDialog from "@/components/room/UpdateRoomFormDialog";
 
 const columnHelper = createColumnHelper<RoomType>();
 
-export const columnsTable = [
+export const roomTableColumn = [
   columnHelper.accessor("room_number", {
     header: ({ column }) => {
       return (

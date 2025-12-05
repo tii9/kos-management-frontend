@@ -15,23 +15,18 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState } from "react";
-import { columnsTable } from "@/lib/tableColumn";
-import { Button } from "@/components/ui/button";
+import { roomTableColumn } from "@/lib/roomTableColumn";
 import type { RoomType } from "@/types/RoomType";
+import CreateRoomForm from "@/components/room/CreateRoomForm";
+import TablePagination from "@/components/TablePagination";
 
-type RoomTableType = {
-  data: RoomType[];
-  isLoading: boolean;
-  isError: boolean;
-};
+const columns = roomTableColumn;
 
-const columns = columnsTable;
-
-export function RoomTable({ data }: RoomTableType) {
+export function RoomTable({ data }: { data: RoomType[] }) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
-    pageSize: 10,
+    pageSize: 7,
   });
 
   const table = useReactTable({
@@ -50,13 +45,17 @@ export function RoomTable({ data }: RoomTableType) {
   });
 
   return (
-    <div className="p-2">
-      <Table>
+    <div className="grid gap-6">
+      <div className="flex justify-end">
+        <CreateRoomForm />
+      </div>
+
+      <Table className="table-auto min-w-full md:table-fixed">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableHead key={header.id}>
+                <TableHead key={header.id} className="whitespace-nowrap">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -69,35 +68,29 @@ export function RoomTable({ data }: RoomTableType) {
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows.map((row) => (
-            <TableRow key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </TableCell>
-              ))}
+          {table.getRowModel().rows.length ? (
+            table.getRowModel().rows.map((row) => (
+              <TableRow key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell
+                colSpan={table.getAllColumns().length}
+                className="h-24 text-center"
+              >
+                data tidak ditemukan
+              </TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
-      <div className="flex items-center justify-end gap-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </div>
+      <TablePagination table={table} />
     </div>
   );
 }

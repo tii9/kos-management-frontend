@@ -70,7 +70,7 @@ const CreateRoomForm = () => {
     <Dialog open={open} onOpenChange={setOpen}>
       <form>
         <DialogTrigger asChild>
-          <Button>+ Add Room</Button>
+          <Button>+ Tambah Kamar</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>

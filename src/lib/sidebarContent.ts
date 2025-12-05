@@ -1,7 +1,7 @@
 import RoomSection from "@/components/room/Room";
 import DashboardSection from "@/components/sidebar-content/Dashboard";
 import SettingsSection from "@/components/sidebar-content/Settings";
-import TenantSection from "@/components/sidebar-content/Tenant";
+import TenantSection from "@/components/tenant/Tenant";
 import { Bed, ChartLine, Settings, Users } from "lucide-react";
 
 export const sidebarContent = {
