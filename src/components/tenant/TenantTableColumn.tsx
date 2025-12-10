@@ -2,6 +2,8 @@ import type { TenantType } from "@/types/TenantsType";
 import { createColumnHelper, type Row } from "@tanstack/react-table";
 import DeleteTenantDialog from "@/components/tenant/DeleteTenantDialog";
 import UpdateTenantDialogForm from "@/components/tenant/UpdateTenantDialogForm";
+import { TableColumnDateFormat } from "@/lib/tableColumnDateFormat";
+import RoomInfoCard from "@/components/room/RoomInfoCard";
 
 const columnHelper = createColumnHelper<TenantType>();
 
@@ -36,17 +38,18 @@ export const tenantTableColumn = [
   }),
   columnHelper.accessor("room.room_number", {
     header: "Kamar Disewa",
-    cell: ({ row }) => row.original.room?.room_number ?? "-",
+    cell: ({ row }) =>
+      row.original.room?.room_number ? <RoomInfoCard data={row} /> : "-",
     enableSorting: true,
   }),
   columnHelper.accessor("start_date", {
     header: "Tanggal Menyewa",
-    cell: ({ row }) => row.original.start_date ?? "-",
+    cell: (info) => <TableColumnDateFormat info={info} />,
     enableSorting: false,
   }),
   columnHelper.accessor("next_payment_date", {
     header: "Tenggat Bayar",
-    cell: ({ row }) => row.original.next_payment_date ?? "-",
+    cell: (info) => <TableColumnDateFormat info={info} />,
     enableSorting: false,
   }),
   columnHelper.accessor("payment_status", {
@@ -61,7 +64,7 @@ export const tenantTableColumn = [
       const data = row.original;
       return (
         <div className="flex gap-2 justify-center ">
-          <UpdateTenantDialogForm />
+          <UpdateTenantDialogForm data={data} />
 
           <DeleteTenantDialog id={data.id} />
         </div>

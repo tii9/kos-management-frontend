@@ -1,4 +1,5 @@
-export type ActiveSidebarType = "dashboard" | "kamar" | "penyewa" | "settings";
+// export type ActiveSidebarType = "dashboard" | "kamar" | "penyewa" | "settings";
+export type ActiveSidebarType = "kamar" | "penyewa";
 
 export type ActiveSidebarContextType = {
   activeSidebar: ActiveSidebarType;

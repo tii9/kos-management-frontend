@@ -41,12 +41,13 @@ const UpdateRoomFormDialog = ({ data }: { data: RoomType }) => {
   const { token } = useAuth();
 
   const queryClient = useQueryClient();
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending, status } = useMutation({
     mutationFn: (payload: UpdateRoomPayload) => updateRoom(payload),
     onSuccess: () => {
       form.reset();
       setOpen(false);
       queryClient.invalidateQueries({ queryKey: ["rooms"] });
+      console.log(status);
       toast.success("Berhasil edit data");
     },
     onError: (error: Error) => {

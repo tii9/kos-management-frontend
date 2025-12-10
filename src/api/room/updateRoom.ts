@@ -14,7 +14,6 @@ export const updateRoom = async (payload: UpdateRoomPayload) => {
       room_number: payload.room_number,
       price_per_month: payload.price_per_month,
       is_available,
-      updated_at: Date.now(),
     }),
   });
   const data = await res.json();

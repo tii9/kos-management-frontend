@@ -1,14 +1,14 @@
 import RoomSection from "@/components/room/Room";
-import DashboardSection from "@/components/sidebar-content/Dashboard";
-import SettingsSection from "@/components/sidebar-content/Settings";
+// import DashboardSection from "@/components/sidebar-content/Dashboard";
+// import SettingsSection from "@/components/sidebar-content/Settings";
 import TenantSection from "@/components/tenant/Tenant";
-import { Bed, ChartLine, Settings, Users } from "lucide-react";
+import { Bed, Users } from "lucide-react";
 
 export const sidebarContent = {
-  dashboard: {
-    title: "Admin Dashboard",
-    content: DashboardSection,
-  },
+  // dashboard: {
+  //   title: "Admin Dashboard",
+  //   content: DashboardSection,
+  // },
   kamar: {
     title: "List Kamar",
     content: RoomSection,
@@ -17,10 +17,10 @@ export const sidebarContent = {
     title: "List Penyewa",
     content: TenantSection,
   },
-  settings: {
-    title: "Settings",
-    content: SettingsSection,
-  },
+  // settings: {
+  //   title: "Settings",
+  //   content: SettingsSection,
+  // },
 };
 
 export const sidebarData = {
@@ -29,12 +29,12 @@ export const sidebarData = {
       title: "Main Content",
       url: "#",
       items: [
-        {
-          id: "dashboard",
-          title: "Dashboard",
-          icon: ChartLine,
-          url: "#",
-        },
+        // {
+        //   id: "dashboard",
+        //   title: "Dashboard",
+        //   icon: ChartLine,
+        //   url: "#",
+        // },
         {
           id: "kamar",
           title: "Kamar",
@@ -47,12 +47,12 @@ export const sidebarData = {
           icon: Users,
           url: "#",
         },
-        {
-          id: "settings",
-          title: "Settings",
-          icon: Settings,
-          url: "#",
-        },
+        // {
+        //   id: "settings",
+        //   title: "Settings",
+        //   icon: Settings,
+        //   url: "#",
+        // },
       ],
     },
   ],

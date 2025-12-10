@@ -6,7 +6,7 @@ export const ActiveSidebarProvider = ({
   children,
 }: React.PropsWithChildren) => {
   const [activeSidebar, setActiveSidebar] =
-    useState<ActiveSidebarType>("dashboard");
+    useState<ActiveSidebarType>("kamar");
 
   return (
     <ActiveSidebarContext.Provider value={{ activeSidebar, setActiveSidebar }}>
